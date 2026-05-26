@@ -1,3 +1,48 @@
+/* ==================== CHROME TABS LOGIC ==================== */
+function switchTab(tabId) {
+  // 1. Update active tab UI
+  document.querySelectorAll('.chrome-tab').forEach(tab => {
+    tab.classList.toggle('active', tab.getAttribute('data-tab') === tabId);
+  });
+
+  // 2. Hide all panels
+  const panels = document.querySelectorAll('.tab-panel');
+  panels.forEach(p => {
+    p.classList.remove('active', 'show');
+  });
+
+  // 3. Show target panel with animation
+  const activePanel = document.getElementById('panel-' + tabId);
+  if (activePanel) {
+    activePanel.classList.add('active');
+    // Force reflow for transform transition
+    void activePanel.offsetWidth;
+    activePanel.classList.add('show');
+    
+    // 4. Scroll to top smoothly
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // 5. Trigger reveal animations for this panel
+    const reveals = activePanel.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    reveals.forEach(el => {
+      revealObserver.unobserve(el);
+      revealObserver.observe(el);
+    });
+
+    // 6. Special handling for certain tabs
+    if (tabId === 'home') {
+      // Re-trigger counters if home
+      const stats = activePanel.querySelector('.hero-stats');
+      if (stats) counterObserver.observe(stats);
+    }
+  }
+}
+
+// Ensure first tab is loaded correctly on boot
+document.addEventListener('DOMContentLoaded', () => {
+    switchTab('home');
+});
+
 /* ==================== DATA ==================== */
 const screensData = [
   { cat: 'autenticacion', title: '1. Splash Screen', desc: 'Pantalla de bienvenida con logo', icon: 'fa-solid fa-mobile-screen-button' },

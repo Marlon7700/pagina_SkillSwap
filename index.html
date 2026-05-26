@@ -41,34 +41,78 @@
 
 <!-- ==================== NAVBAR ==================== -->
 <nav class="navbar navbar-expand-lg" id="mainNav">
-  <div class="container">
-    <a class="brand" href="#">
+  <div class="container d-flex flex-column flex-lg-row align-items-center">
+    <a class="brand" href="#" onclick="switchTab('home')">
       <img src="IMAGENES/imagen_skillwasp.jpeg" alt="SkillSwap" onerror="this.style.display='none'; this.nextSibling.style.display='flex'" id="navLogo">
       <div style="display:none; width:36px;height:36px;background:linear-gradient(135deg,#6BCE7A,#00A99D);border-radius:10px;align-items:center;justify-content:center;color:white;font-weight:900;font-size:1rem;">S</div>
       <span><span class="brand-g">Skill</span><span class="brand-t">Swap</span></span>
     </a>
     
-    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu" aria-controls="navMenu" aria-expanded="false" aria-label="Toggle navigation">
-      <i class="fa-solid fa-bars" style="color: white; font-size: 1.5rem;"></i>
-    </button>
+    <div class="chrome-tabs-wrapper ms-lg-4 mt-3 mt-lg-0">
+      <div class="chrome-tabs" id="chromeTabs">
+        <div class="chrome-tab active" onclick="switchTab('home')" data-tab="home">
+          <div class="chrome-tab-content">
+            <i class="fa-solid fa-house me-2"></i>Inicio
+          </div>
+          <div class="chrome-tab-background">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><defs><symbol id="chrome-tab-geometry-left" viewBox="0 0 214 36"><path d="M17 0h197v36H0v-2c4.5 0 9-3.5 9-8V8c0-4.5 3.5-8 8-8z"/></symbol><symbol id="chrome-tab-geometry-right" viewBox="0 0 214 36"><use xlink:href="#chrome-tab-geometry-left"/></symbol><clipPath id="crop"><rect class="mask" width="100%" height="100%" x="0"/></clipPath></defs><svg width="52%" height="100%"><use xlink:href="#chrome-tab-geometry-left" width="214" height="36" class="chrome-tab-geometry"/></svg><g transform="scale(-1, 1)"><svg width="52%" height="100%" x="-100%"><use xlink:href="#chrome-tab-geometry-right" width="214" height="36" class="chrome-tab-geometry"/></svg></g></svg>
+          </div>
+        </div>
+        <div class="chrome-tab" onclick="switchTab('features')" data-tab="features">
+          <div class="chrome-tab-content">
+            <i class="fa-solid fa-bolt me-2"></i>Características
+          </div>
+          <div class="chrome-tab-background">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#chrome-tab-geometry-left" width="214" height="36" class="chrome-tab-geometry"/></svg>
+          </div>
+        </div>
+        <div class="chrome-tab" onclick="switchTab('how')" data-tab="how">
+          <div class="chrome-tab-content">
+            <i class="fa-solid fa-gear me-2"></i>Cómo Funciona
+          </div>
+          <div class="chrome-tab-background">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#chrome-tab-geometry-left" width="214" height="36" class="chrome-tab-geometry"/></svg>
+          </div>
+        </div>
+        <div class="chrome-tab" onclick="switchTab('gallery')" data-tab="gallery">
+          <div class="chrome-tab-content">
+            <i class="fa-solid fa-image me-2"></i>Galería
+          </div>
+          <div class="chrome-tab-background">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#chrome-tab-geometry-left" width="214" height="36" class="chrome-tab-geometry"/></svg>
+          </div>
+        </div>
+        <div class="chrome-tab" onclick="switchTab('authors')" data-tab="authors">
+          <div class="chrome-tab-content">
+            <i class="fa-solid fa-users me-2"></i>Autores
+          </div>
+          <div class="chrome-tab-background">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#chrome-tab-geometry-left" width="214" height="36" class="chrome-tab-geometry"/></svg>
+          </div>
+        </div>
+        <div class="chrome-tab" onclick="switchTab('rating')" data-tab="rating">
+          <div class="chrome-tab-content">
+            <i class="fa-solid fa-star me-2"></i>Calificar
+          </div>
+          <div class="chrome-tab-background">
+            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"><use xlink:href="#chrome-tab-geometry-left" width="214" height="36" class="chrome-tab-geometry"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav ms-auto align-items-center gap-1">
-        <li class="nav-item"><a class="nav-link-custom" href="#features">Características</a></li>
-        <li class="nav-item"><a class="nav-link-custom" href="#how">Cómo Funciona</a></li>
-        <li class="nav-item"><a class="nav-link-custom" href="#gallery">Galería</a></li>
-        <li class="nav-item"><a class="nav-link-custom" href="#authors">Autores</a></li>
-        <li class="nav-item"><a class="nav-link-custom" href="#rating">Calificar</a></li>
-        <li class="nav-item ms-lg-3 mt-3 mt-lg-0">
-          <a class="btn-nav" href="#download" style="display: inline-block;">Descargar App</a>
-        </li>
-      </ul>
+    <div class="ms-lg-auto d-none d-lg-block">
+      <a class="btn-nav" href="#download">Descargar App</a>
     </div>
   </div>
 </nav>
 
-<!-- ==================== HERO ==================== -->
-<section class="hero" id="home">
+<!-- ==================== MAIN CONTENT (TAB PANELS) ==================== -->
+<main id="tabContentContainer">
+  <!-- Section panels will be switched here -->
+  <div id="panel-home" class="tab-panel active">
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
   <div class="container">
     <div class="row align-items-center g-5">
 
@@ -154,7 +198,9 @@
     </div>
   </div>
 </section>
+</div>
 
+<div id="panel-features" class="tab-panel">
 <!-- ==================== FEATURES ==================== -->
 <section class="section-block" id="features">
   <div class="container">
@@ -221,7 +267,9 @@
     </div>
   </div>
 </section>
+</div>
 
+<div id="panel-how" class="tab-panel">
 <!-- ==================== HOW IT WORKS ==================== -->
 <section class="section-block" id="how" style="background:rgba(255,255,255,0.015); border-top:1px solid rgba(255,255,255,0.05);">
   <div class="container">
@@ -258,7 +306,9 @@
     </div>
   </div>
 </section>
+</div>
 
+<div id="panel-gallery" class="tab-panel">
 <!-- ==================== GALLERY ==================== -->
 <section class="section-block" id="gallery" style="background:rgba(255,255,255,0.015); border-top:1px solid rgba(255,255,255,0.05);">
   <div class="container">
@@ -277,7 +327,9 @@
     <div class="row g-3" id="galleryGrid"></div>
   </div>
 </section>
+</div>
 
+<div id="panel-authors" class="tab-panel">
 <!-- ==================== AUTHORS ==================== -->
 <section class="section-block" id="authors">
   <div class="container">
@@ -324,7 +376,9 @@
     </div>
   </div>
 </section>
+</div>
 
+<div id="panel-rating" class="tab-panel">
 <!-- ==================== RATING ==================== -->
 <section class="section-block" id="rating">
   <div class="container">
@@ -396,6 +450,8 @@
     </div>
   </div>
 </section>
+</div><!-- Fin panel-rating -->
+</main>
 
 <!-- ==================== DOWNLOAD CTA ==================== -->
 <section class="cta-section" id="download">
