@@ -168,6 +168,12 @@
     .tab-panel.active { display: block; }
     .tab-panel.show { opacity: 1; transform: translateY(0); }
 
+    /* Aumentar espacio superior para que no se pegue al navbar Chrome */
+    .tab-panel .section-block {
+      padding-top: 140px;
+      padding-bottom: 80px;
+    }
+
     #tabContentContainer { min-height: 80vh; position: relative; }
 
     /* Buttons and Links */
@@ -217,7 +223,7 @@
     .hero {
       min-height: 100vh;
       display: flex; align-items: center;
-      padding-top: 80px;
+      padding-top: 130px;
       position: relative; z-index: 1;
     }
 
