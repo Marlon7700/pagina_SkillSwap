@@ -40,7 +40,8 @@ const catColors = {
   interacciones: '#60a5fa', sistema: '#a855f7'
 };
 
-let imageStore = new Array(33).fill(null); // holds base64 or null
+// Cargar las imágenes de la carpeta IMAGENES por defecto
+let imageStore = Array.from({ length: 33 }, (_, i) => `IMAGENES/${i + 1}.jpg`);
 let currentSlide = 0;
 const SLIDES_IN_PHONE = 5; // show first N in phone nav
 
@@ -296,92 +297,6 @@ function openLightbox(idx) {
 }
 function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
-
-/* ==================== BATCH UPLOAD ==================== */
-const dropZone = document.getElementById('dropZone');
-const batchInput = document.getElementById('batchInput');
-
-['dragover','dragenter'].forEach(ev => dropZone.addEventListener(ev, e => {
-  e.preventDefault(); dropZone.classList.add('drag-over');
-}));
-['dragleave','drop'].forEach(ev => dropZone.addEventListener(ev, e => {
-  e.preventDefault(); dropZone.classList.remove('drag-over');
-  if (ev === 'drop') processFiles(e.dataTransfer.files);
-}));
-batchInput.addEventListener('change', () => processFiles(batchInput.files));
-
-function processFiles(files) {
-  if (!files.length) return;
-  const prog = document.getElementById('uploadProgress');
-  const bar = document.getElementById('uploadBar');
-  const pct = document.getElementById('uploadPct');
-  const lbl = document.getElementById('uploadCountLabel');
-  const done = document.getElementById('uploadDone');
-  prog.style.display = 'block'; done.style.display = 'none';
-
-  const total = Math.min(files.length, 33);
-  let processed = 0;
-
-  function next(i) {
-    if (i >= total) {
-      bar.style.width = '100%'; pct.textContent = '100%';
-      done.style.display = 'block';
-      done.innerHTML = `<i class="fa-solid fa-circle-check me-2"></i>¡${processed} capturas adaptadas con éxito en la galería y el teléfono!`;
-      renderGallery(); buildPhoneSlides();
-      showToast('¡Listo!', `${processed} capturas cargadas al simulador y galería`, 'fa-solid fa-images');
-      return;
-    }
-    const file = files[i];
-    if (!file.type.startsWith('image/')) { next(i + 1); return; }
-    const reader = new FileReader();
-    reader.onload = e => {
-      imageStore[i] = e.target.result;
-      processed++;
-      const p = Math.round((processed / total) * 100);
-      bar.style.width = p + '%'; pct.textContent = p + '%';
-      lbl.textContent = `Procesando ${processed} de ${total}...`;
-      next(i + 1);
-    };
-    reader.readAsDataURL(file);
-  }
-  next(0);
-}
-
-/* ==================== APK UPLOAD ==================== */
-const apkInput = document.getElementById('apkInput');
-const apkZone = document.getElementById('apkZone');
-
-apkZone.addEventListener('click', () => apkInput.click());
-apkZone.addEventListener('dragover', e => { e.preventDefault(); apkZone.style.borderColor = 'var(--t)'; });
-apkZone.addEventListener('dragleave', () => { apkZone.style.borderColor = ''; });
-apkZone.addEventListener('drop', e => {
-  e.preventDefault(); apkZone.style.borderColor = '';
-  apkInput.files = e.dataTransfer.files;
-  handleApk();
-});
-apkInput.addEventListener('change', handleApk);
-
-function handleApk() {
-  const file = apkInput.files[0];
-  if (!file) return;
-  const prog = document.getElementById('apkProgress');
-  const bar = document.getElementById('apkBar');
-  const status = document.getElementById('apkStatus');
-  prog.style.display = 'block';
-  let p = 0;
-  const iv = setInterval(() => {
-    p = Math.min(p + 8, 100);
-    bar.style.width = p + '%';
-    if (p >= 100) {
-      clearInterval(iv);
-      const url = URL.createObjectURL(file);
-      document.getElementById('dlAndroid').href = url;
-      document.getElementById('dlAndroid').download = file.name;
-      status.innerHTML = `<i class="fa-solid fa-circle-check me-1"></i>${file.name} lista para descargar`;
-      showToast('APK Cargada', `${file.name} actualizada en el botón de descarga`, 'fa-brands fa-android');
-    }
-  }, 120);
-}
 
 /* ==================== RATING ==================== */
 const ratings = { app: 0, page: 0 };

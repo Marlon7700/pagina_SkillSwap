@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillSwap — Conecta, Aprende y Comparte Habilidades</title>
   <!-- Favicon -->
-  <link rel="icon" type="image/jpeg" href="img/imagen_skillwasp.jpeg">
+  <link rel="icon" type="image/jpeg" href="IMAGENES/imagen_skillwasp.jpeg">
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,7 +43,7 @@
 <nav class="navbar navbar-expand-lg" id="mainNav">
   <div class="container">
     <a class="brand" href="#">
-      <img src="img/imagen_skillwasp.jpeg" alt="SkillSwap" onerror="this.style.display='none'; this.nextSibling.style.display='flex'" id="navLogo">
+      <img src="IMAGENES/imagen_skillwasp.jpeg" alt="SkillSwap" onerror="this.style.display='none'; this.nextSibling.style.display='flex'" id="navLogo">
       <div style="display:none; width:36px;height:36px;background:linear-gradient(135deg,#6BCE7A,#00A99D);border-radius:10px;align-items:center;justify-content:center;color:white;font-weight:900;font-size:1rem;">S</div>
       <span><span class="brand-g">Skill</span><span class="brand-t">Swap</span></span>
     </a>
@@ -149,7 +149,6 @@
       <div class="tech-badge"><i class="fa-solid fa-fire" style="color:#FF7043;"></i> Firebase</div>
       <div class="tech-badge"><i class="fa-solid fa-robot" style="color:var(--g)"></i> Gemini AI</div>
       <div class="tech-badge"><i class="fa-brands fa-bootstrap text-purple" style="color:#7952B3;"></i> Bootstrap 5</div>
-      <div class="tech-badge"><i class="fa-solid fa-database" style="color:var(--t)"></i> Firestore</div>
       <div class="tech-badge"><i class="fa-brands fa-android" style="color:#3DDC84;"></i> Android</div>
       <div class="tech-badge"><i class="fa-brands fa-apple text-white"></i> iOS</div>
     </div>
@@ -260,42 +259,6 @@
   </div>
 </section>
 
-<!-- ==================== BATCH IMAGE UPLOAD ==================== -->
-<section class="section-block" id="upload">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8 reveal">
-        <div class="glass-card p-5">
-          <div class="text-center mb-4">
-            <div class="section-tag">Administrador</div>
-            <h2 class="section-title" style="font-size:2rem;">Subir las <span class="accent">33 Capturas</span> en Lote</h2>
-            <p class="section-sub mx-auto" style="font-size:0.88rem;">Selecciona todos los archivos a la vez. El sistema los asignará automáticamente al carrusel del teléfono y la galería.</p>
-          </div>
-          <div class="upload-zone" id="dropZone" onclick="document.getElementById('batchInput').click()">
-            <div class="upload-icon" id="uploadIcon"><i class="fa-solid fa-images"></i></div>
-            <h4>Arrastra o selecciona tus capturas</h4>
-            <p>Soporta JPG, PNG, WEBP — hasta 33 archivos de golpe</p>
-            <input type="file" id="batchInput" accept="image/*" multiple style="display:none">
-            <button class="btn-upload" onclick="event.stopPropagation(); document.getElementById('batchInput').click()">
-              <i class="fa-solid fa-cloud-arrow-up me-2"></i>Seleccionar Archivos
-            </button>
-          </div>
-          <div id="uploadProgress" style="display:none; margin-top:24px;">
-            <div class="d-flex justify-content-between mb-2">
-              <span style="font-size:0.82rem;color:rgba(255,255,255,0.5);" id="uploadCountLabel">Procesando...</span>
-              <span style="font-size:0.82rem;color:var(--g);font-weight:700;" id="uploadPct">0%</span>
-            </div>
-            <div class="progress-custom">
-              <div class="progress-bar-custom" id="uploadBar"></div>
-            </div>
-            <div id="uploadDone" style="display:none;margin-top:16px;padding:14px 20px;background:rgba(107,206,122,0.08);border:1px solid rgba(107,206,122,0.2);border-radius:14px;font-size:0.85rem;color:var(--g);font-weight:600;text-align:center;"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ==================== GALLERY ==================== -->
 <section class="section-block" id="gallery" style="background:rgba(255,255,255,0.015); border-top:1px solid rgba(255,255,255,0.05);">
   <div class="container">
@@ -330,7 +293,7 @@
           <div class="author-avatar">
             J<div class="avatar-ring"></div>
           </div>
-          <h5>Josué Pérez</h5>
+          <h5>Marlon Enrique Perez Cañizares</h5>
           <span class="author-role">Lead Developer & Arquitecto</span>
           <p>Diseño de la arquitectura Flutter, integración Firebase, sistema de chat en tiempo real y módulo de IA con Gemini.</p>
           <div class="author-social">
@@ -346,7 +309,7 @@
           <div class="author-avatar" style="background:linear-gradient(135deg,#00A99D,#3b82f6);">
             A<div class="avatar-ring"></div>
           </div>
-          <h5>Andrea Mora</h5>
+          <h5>Jesus David Cardona Alvarez</h5>
           <span class="author-role">UI/UX Designer</span>
           <p>Diseño de experiencia de usuario, sistema de onboarding, flujos de pantalla y guía de estilo visual de SkillSwap.</p>
           <div class="author-social">
@@ -357,37 +320,6 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-lg-3 reveal delay-3">
-        <div class="author-card">
-          <div class="author-avatar" style="background:linear-gradient(135deg,#f59e0b,#ef4444);">
-            C<div class="avatar-ring"></div>
-          </div>
-          <h5>Carlos Ríos</h5>
-          <span class="author-role">Backend & Firebase</span>
-          <p>Configuración de Firestore, autenticación OAuth, Cloud Functions, almacenamiento y reglas de seguridad.</p>
-          <div class="author-social">
-            <a href="#"><i class="fa-brands fa-github"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#"><i class="fa-solid fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-lg-3 reveal delay-4">
-        <div class="author-card">
-          <div class="author-avatar" style="background:linear-gradient(135deg,#8b5cf6,#ec4899);">
-            M<div class="avatar-ring"></div>
-          </div>
-          <h5>María López</h5>
-          <span class="author-role">QA & Landing Page</span>
-          <p>Control de calidad, pruebas de usuario, documentación técnica y desarrollo de esta landing page premium.</p>
-          <div class="author-social">
-            <a href="#"><i class="fa-brands fa-github"></i></a>
-            <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-            <a href="#"><i class="fa-solid fa-envelope"></i></a>
-          </div>
-        </div>
-      </div>
 
     </div>
   </div>
@@ -460,32 +392,6 @@
           <div id="reviewsList" class="mt-4" style="display:flex;flex-direction:column;gap:12px;max-height:300px;overflow-y:auto;"></div>
         </div>
 
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== APK UPLOAD ==================== -->
-<section class="section-block" id="apk-panel" style="background:rgba(255,255,255,0.015);border-top:1px solid rgba(255,255,255,0.05);">
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-7 reveal">
-        <div class="glass-card p-5">
-          <div class="text-center mb-4">
-            <div class="section-tag">Panel Admin</div>
-            <h3 class="section-title" style="font-size:1.8rem;">Subir <span class="accent">Compilación</span></h3>
-            <p style="font-size:0.85rem;color:rgba(255,255,255,0.4);">Sube la APK o IPA para actualizar el botón de descarga principal.</p>
-          </div>
-          <div class="apk-zone" id="apkZone" onclick="document.getElementById('apkInput').click()">
-            <i class="fa-solid fa-file-zipper" style="font-size:2.5rem;color:rgba(255,255,255,0.2);margin-bottom:12px;"></i>
-            <h5 style="color:rgba(255,255,255,0.6);">Arrastra tu <strong style="color:var(--g);">.apk</strong> o <strong style="color:var(--t);">.ipa</strong></h5>
-            <input type="file" id="apkInput" accept=".apk,.ipa" style="display:none">
-          </div>
-          <div id="apkProgress" style="display:none;margin-top:20px;">
-            <div class="progress-custom"><div class="progress-bar-custom" id="apkBar" style="background:linear-gradient(135deg,var(--t),var(--g));"></div></div>
-            <div id="apkStatus" style="text-align:center;margin-top:12px;font-size:0.85rem;color:var(--g);font-weight:700;"></div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
