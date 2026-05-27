@@ -102,7 +102,7 @@
     </div>
 
     <div class="ms-lg-auto d-none d-lg-block">
-      <a class="btn-nav" href="#download">Descargar App</a>
+      <a class="btn-nav" href="apk/SkillSwap.apk" data-apk-download download="SkillSwap.apk">Descargar App</a>
     </div>
   </div>
 </nav>
@@ -127,7 +127,7 @@
           Una solución móvil inteligente que conecta la oferta de conocimientos con la demanda de habilidades, sin fricciones y con inteligencia artificial integrada.
         </p>
         <div class="d-flex flex-wrap gap-3">
-          <a href="apk/app-release.apk" class="btn-hero-primary" download="SkillSwap.apk"><i class="fa-brands fa-android me-2"></i>Descargar APK</a>
+          <a href="apk/SkillSwapp.apk" class="btn-hero-primary" data-apk-download download="SkillSwap.apk"><i class="fa-brands fa-android me-2"></i>Descargar APK</a>
           <a href="#gallery" class="btn-hero-outline"><i class="fa-solid fa-images me-2"></i>Ver Capturas</a>
         </div>
         <div class="hero-stats">
@@ -323,13 +323,14 @@
     <div class="text-center mb-5 reveal">
       <div class="section-tag">Capturas</div>
       <h2 class="section-title">Galería de <span class="accent">Pantallas</span></h2>
-      <p class="section-sub mx-auto">Explora las 33 pantallas principales de SkillSwap. Haz clic en cualquier imagen para verla en grande.</p>
+      <p class="section-sub mx-auto">Explora las 36 pantallas principales de SkillSwap. Haz clic en cualquier imagen para verla en grande.</p>
       <div class="d-flex flex-wrap justify-content-center gap-2 mt-4">
-        <button class="gallery-filter-btn active" onclick="filterGal('todos', this)">Todas (33)</button>
+        <button class="gallery-filter-btn active" onclick="filterGal('todos', this)">Todas (36)</button>
         <button class="gallery-filter-btn" onclick="filterGal('autenticacion', this)">Autenticación</button>
         <button class="gallery-filter-btn" onclick="filterGal('onboarding', this)">Onboarding</button>
         <button class="gallery-filter-btn" onclick="filterGal('interacciones', this)">Chat & IA</button>
         <button class="gallery-filter-btn" onclick="filterGal('sistema', this)">Matches & Sistema</button>
+        <button class="gallery-filter-btn" onclick="filterGal('calendario', this)">Calendario</button>
       </div>
     </div>
     <div class="row g-3" id="galleryGrid"></div>
@@ -470,21 +471,32 @@
     <p class="section-sub mx-auto mb-5" style="font-size:1rem;">Empieza a intercambiar habilidades con miles de personas. Descarga gratuita.</p>
     <div class="row justify-content-center g-3">
       <div class="col-12 col-sm-auto">
-        <!-- ✅ APK LINK ACTUALIZADO -->
-        <a href="apk/app-release.apk" class="btn-download" id="dlAndroid" download="SkillSwap.apk">
+        <a href="apk/SkillSwapp.apk" class="btn-download" id="dlAndroid" data-apk-download download="SkillSwap.apk">
           <i class="fa-brands fa-android" style="color:#3DDC84;"></i>
           <div><small>Descargar para</small><strong>Android (.APK)</strong></div>
-        </a>
-      </div>
-      <div class="col-12 col-sm-auto">
-        <a href="#" class="btn-download">
-          <i class="fa-brands fa-apple"></i>
-          <div><small>Próximamente en</small><strong>iPhone (iOS)</strong></div>
         </a>
       </div>
     </div>
   </div>
 </section>
+
+<!-- ==================== DOWNLOAD MODAL ==================== -->
+<div class="download-modal" id="downloadModal" aria-hidden="true">
+  <div class="download-modal-card" role="dialog" aria-modal="true" aria-labelledby="downloadModalTitle">
+    <button type="button" class="download-modal-close" id="downloadModalClose" aria-label="Cerrar modal">&times;</button>
+    <div class="download-modal-icon"><i class="fa-solid fa-mobile-screen-button"></i></div>
+    <h3 id="downloadModalTitle">¿Estás seguro de instalar la aplicación?</h3>
+    <p>Vas a descargar <strong>SkillSwap.apk</strong>. Antes de continuar, confirma que aceptas los términos y condiciones.</p>
+    <label class="download-terms">
+      <input type="checkbox" id="downloadTermsCheck">
+      <span>Acepto los términos y condiciones.</span>
+    </label>
+    <div class="download-modal-actions">
+      <button type="button" class="download-modal-btn secondary" id="downloadCancelBtn">Cancelar</button>
+      <button type="button" class="download-modal-btn primary" id="downloadConfirmBtn">Instalar</button>
+    </div>
+  </div>
+</div>
 
 <!-- ==================== FOOTER ==================== -->
 <footer>

@@ -77,16 +77,24 @@ const screensData = [
   { cat: 'sistema', title: '30. Mis Archivos', desc: 'Gestor de carpetas y archivos', icon: 'fa-solid fa-folder-open' },
   { cat: 'sistema', title: '31. Visor de PDF', desc: 'Visualización de manuales adjuntos', icon: 'fa-solid fa-file-pdf' },
   { cat: 'sistema', title: '32. Aviso de Privacidad', desc: 'Compromiso legal de SkillSwap', icon: 'fa-solid fa-shield-check' },
-  { cat: 'sistema', title: '33. Configuración', desc: 'Ajustes generales de la cuenta', icon: 'fa-solid fa-gear' }
+  { cat: 'sistema', title: '33. Configuración', desc: 'Ajustes generales de la cuenta', icon: 'fa-solid fa-gear' },
+  { cat: 'calendario', title: '34. Programación de Hora', desc: 'Selector de hora para agendar encuentros', icon: 'fa-solid fa-clock' },
+  { cat: 'calendario', title: '35. Programación de Calendario', desc: 'Vista de calendario para organizar encuentros', icon: 'fa-solid fa-calendar-days' },
+  { cat: 'calendario', title: '36. Selección de Fecha', desc: 'Elección precisa del día del encuentro', icon: 'fa-solid fa-calendar-check' }
 ];
 
 const catColors = {
   autenticacion: '#6BCE7A', onboarding: '#00A99D',
-  interacciones: '#60a5fa', sistema: '#a855f7'
+  interacciones: '#60a5fa', sistema: '#a855f7', calendario: '#f59e0b'
 };
 
 // Cargar las imágenes de la carpeta IMAGENES por defecto
-let imageStore = Array.from({ length: 33 }, (_, i) => `IMAGENES/${i + 1}.jpg`);
+let imageStore = [
+  ...Array.from({ length: 33 }, (_, i) => `IMAGENES/${i + 1}.jpg`),
+  'IMAGENES/34-1.jpg',
+  'IMAGENES/34-2.jpg',
+  'IMAGENES/34.jpg'
+];
 let currentSlide = 0;
 const SLIDES_IN_PHONE = 5; // show first N in phone nav
 
@@ -419,6 +427,70 @@ function showToast(msg, sub, icon = 'fa-solid fa-circle-check') {
   t.classList.add('show');
   toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
 }
+
+/* ==================== DOWNLOAD CONFIRMATION ==================== */
+let pendingDownloadHref = '';
+const downloadModal = document.getElementById('downloadModal');
+const downloadTermsCheck = document.getElementById('downloadTermsCheck');
+const downloadModalClose = document.getElementById('downloadModalClose');
+const downloadCancelBtn = document.getElementById('downloadCancelBtn');
+const downloadConfirmBtn = document.getElementById('downloadConfirmBtn');
+
+function openDownloadModal(href) {
+  pendingDownloadHref = href;
+  downloadTermsCheck.checked = false;
+  downloadModal.classList.add('open');
+  downloadModal.setAttribute('aria-hidden', 'false');
+  setTimeout(() => downloadTermsCheck.focus(), 50);
+}
+
+function closeDownloadModal() {
+  downloadModal.classList.remove('open');
+  downloadModal.setAttribute('aria-hidden', 'true');
+  pendingDownloadHref = '';
+}
+
+function startApkDownload(href) {
+  const link = document.createElement('a');
+  link.href = href;
+  link.download = 'SkillSwap.apk';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+}
+
+document.addEventListener('click', (event) => {
+  const trigger = event.target.closest('[data-apk-download]');
+  if (!trigger) return;
+  event.preventDefault();
+  openDownloadModal(trigger.getAttribute('href'));
+});
+
+downloadModal.addEventListener('click', (event) => {
+  if (event.target === downloadModal) closeDownloadModal();
+});
+
+downloadModalClose.addEventListener('click', closeDownloadModal);
+downloadCancelBtn.addEventListener('click', closeDownloadModal);
+
+downloadConfirmBtn.addEventListener('click', () => {
+  if (!downloadTermsCheck.checked) {
+    showToast('Acepta los términos y condiciones', 'Marca la casilla para continuar con la descarga', 'fa-solid fa-triangle-exclamation');
+    return;
+  }
+
+  if (pendingDownloadHref) {
+    const href = pendingDownloadHref;
+    closeDownloadModal();
+    startApkDownload(href);
+  }
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && downloadModal.classList.contains('open')) {
+    closeDownloadModal();
+  }
+});
 
 /* ==================== 3D TILT CARDS ==================== */
 document.querySelectorAll('.tilt-card').forEach(card => {

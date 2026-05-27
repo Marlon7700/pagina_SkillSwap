@@ -970,6 +970,139 @@
     .btn-download small { display: block; font-size: 0.68rem; color: rgba(255,255,255,0.45); text-transform: uppercase; letter-spacing: 1px; }
     .btn-download strong { font-family: var(--font-head); font-size: 1.1rem; }
 
+    /* ==================== DOWNLOAD MODAL ==================== */
+    .download-modal {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(5, 12, 18, 0.78);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+      z-index: 4000;
+    }
+
+    .download-modal.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .download-modal-card {
+      position: relative;
+      width: min(100%, 520px);
+      border-radius: 28px;
+      padding: 34px 28px 28px;
+      background: linear-gradient(180deg, rgba(20, 38, 52, 0.98), rgba(10, 22, 32, 0.98));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .download-modal-icon {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 18px;
+      border-radius: 22px;
+      display: grid;
+      place-items: center;
+      background: rgba(107, 206, 122, 0.14);
+      color: var(--g);
+      font-size: 1.8rem;
+      box-shadow: inset 0 0 0 1px rgba(107, 206, 122, 0.25);
+    }
+
+    .download-modal-card h3 {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      margin-bottom: 12px;
+      color: #fff;
+    }
+
+    .download-modal-card p {
+      color: rgba(255, 255, 255, 0.78);
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .download-terms {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: left;
+      margin-bottom: 22px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .download-terms input {
+      margin-top: 4px;
+      width: 18px;
+      height: 18px;
+      accent-color: var(--g);
+      flex: 0 0 auto;
+    }
+
+    .download-terms span {
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+    }
+
+    .download-modal-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .download-modal-btn {
+      border: none;
+      border-radius: 999px;
+      padding: 12px 20px;
+      min-width: 140px;
+      font-family: var(--font-head);
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .download-modal-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .download-modal-btn.secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .download-modal-btn.primary {
+      background: var(--grad);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(107, 206, 122, 0.28);
+    }
+
+    .download-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .download-modal-close:hover {
+      color: #fff;
+    }
+
     /* ==================== APK UPLOADER ==================== */
     .apk-zone {
       border: 2px dashed rgba(255,255,255,0.1);
