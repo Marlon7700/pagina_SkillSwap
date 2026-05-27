@@ -149,16 +149,16 @@
       <!-- RIGHT PHONE -->
       <div class="col-lg-6 d-flex justify-content-center reveal-right">
         <div class="phone-scene" style="padding:60px 70px 70px;">
+          
+          <!-- Nav arrows moved outside wrapper to stay fixed -->
+          <div class="phone-nav-btn phone-nav-prev" onclick="changeSlide(-1)" title="Anterior" style="z-index:1001;">
+            <i class="fa-solid fa-chevron-left"></i>
+          </div>
+          <div class="phone-nav-btn phone-nav-next" onclick="changeSlide(1)" title="Siguiente" style="z-index:1001;">
+            <i class="fa-solid fa-chevron-right"></i>
+          </div>
+
           <div class="phone-wrapper" id="phoneWrapper">
-
-            <!-- Nav arrows -->
-            <div class="phone-nav-btn phone-nav-prev" onclick="changeSlide(-1)" title="Anterior">
-              <i class="fa-solid fa-chevron-left"></i>
-            </div>
-            <div class="phone-nav-btn phone-nav-next" onclick="changeSlide(1)" title="Siguiente">
-              <i class="fa-solid fa-chevron-right"></i>
-            </div>
-
             <!-- Glow under phone -->
             <div class="phone-glow"></div>
 
@@ -172,6 +172,15 @@
               <div class="phone-screen" id="phoneScreen">
                 <!-- Slides injected by JS -->
               </div>
+            </div>
+
+            <!-- BACK SIDE OF THE PHONE -->
+            <div class="phone-back">
+              <div class="phone-back-camera"></div>
+              <div class="phone-back-logo">
+                <span class="brand-g">Skill</span><span class="brand-t">Swap</span>
+              </div>
+              <div class="phone-back-text">2026 Edition</div>
             </div>
           </div>
 

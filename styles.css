@@ -329,6 +329,7 @@
       perspective: 1200px;
       perspective-origin: center;
       user-select: none;
+      position: relative;
     }
     .phone-wrapper {
       position: relative;
@@ -342,16 +343,7 @@
       cursor: grabbing;
     }
 
-    .phone-glow {
-      position: absolute;
-      bottom: -40px; left: 50%;
-      transform: translateX(-50%) translateZ(-100px);
-      width: 220px; height: 50px;
-      background: radial-gradient(ellipse, rgba(107,206,122,0.5) 0%, transparent 70%);
-      filter: blur(20px);
-      pointer-events: none;
-    }
-
+    /* FRONT SIDE */
     .phone-frame {
       width: 280px;
       height: 580px;
@@ -363,6 +355,63 @@
         inset 0 2px 3px rgba(255,255,255,0.1),
         inset 0 -2px 3px rgba(0,0,0,0.5);
       position: relative;
+      backface-visibility: hidden;
+      z-index: 2;
+    }
+
+    /* BACK SIDE - Thick Black Borders */
+    .phone-back {
+      position: absolute;
+      top: 0; left: 0;
+      width: 280px;
+      height: 580px;
+      background: #080808; /* Very deep grey/black */
+      border-radius: 50px;
+      transform: rotateY(180deg);
+      backface-visibility: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border: 10px solid #000; /* Extra thick black border */
+      box-shadow: 
+        0 0 50px rgba(0,0,0,0.9),
+        inset 0 0 20px rgba(255,255,255,0.05); /* Highlight the inner edge of the thick border */
+      z-index: 1;
+    }
+
+    .phone-back-camera {
+      position: absolute;
+      top: 40px; right: 40px;
+      width: 70px; height: 70px;
+      background: #111;
+      border-radius: 20px;
+      border: 2px solid #222;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    }
+    .phone-back-camera::after {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 30px; height: 30px;
+      background: radial-gradient(circle, #050505 0%, #111 80%);
+      border-radius: 50%;
+      border: 1px solid #333;
+    }
+
+    .phone-back-logo {
+      font-family: var(--font-head);
+      font-weight: 900;
+      font-size: 2rem;
+      opacity: 0.3;
+      filter: grayscale(1);
+    }
+    .phone-back-text {
+      margin-top: 10px;
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.15);
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
     /* Notch */
