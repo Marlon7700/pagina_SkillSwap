@@ -322,7 +322,7 @@
       font-size: 2rem; font-weight: 900; color: white;
     }
     .stat-item h2 span { color: var(--g); }
-    .stat-item p { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 0.5px; text-transform: uppercase; }
+    .stat-item p { font-size: 0.78rem; color: rgba(255,255,255,0.75); letter-spacing: 0.5px; text-transform: uppercase; }
 
     /* ==================== PHONE MOCKUP ==================== */
     .phone-scene {
@@ -409,7 +409,7 @@
     .phone-back-text {
       margin-top: 10px;
       font-size: 0.7rem;
-      color: rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.6);
       letter-spacing: 2px;
       text-transform: uppercase;
     }
@@ -541,7 +541,7 @@
       text-align: center;
       margin-top: 16px;
       font-size: 0.78rem;
-      color: rgba(255,255,255,0.4);
+      color: rgba(255,255,255,0.8);
       font-weight: 600;
       letter-spacing: 0.5px;
     }
@@ -568,7 +568,7 @@
     }
     .section-title .accent { color: var(--g); }
     .section-sub {
-      font-size: 1rem; color: rgba(255,255,255,0.45);
+      font-size: 1rem; color: rgba(255,255,255,0.7);
       line-height: 1.7; max-width: 540px;
     }
 
@@ -746,8 +746,8 @@
       background: rgba(0,0,0,0.6);
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255,255,255,0.1);
-      color: white; border-radius: 20px; padding: 3px 10px;
-      font-size: 0.6rem; font-weight: 700; text-transform: uppercase; 
+      color: white; border-radius: 20px; padding: 4px 12px;
+      font-size: 0.72rem; font-weight: 700; text-transform: uppercase; 
       z-index: 10;
     }
     
@@ -756,7 +756,7 @@
       text-align: center;
       margin-top: 10px;
     }
-    .gal-info h6 { font-family: var(--font-head); font-weight: 700; color: white; font-size: 0.85rem; margin-bottom: 2px; }
+    .gal-info h3 { font-family: var(--font-head); font-weight: 700; color: white; font-size: 0.85rem; margin-bottom: 2px; }
     .gal-info p { font-size: 0.7rem; color: rgba(255,255,255,0.4); margin-bottom: 0; }
 
     /* ==================== AUTHORS ==================== */
@@ -827,12 +827,13 @@
     }
 
     .author-role { 
-      font-size: 0.75rem; color: var(--g); font-weight: 800; 
+      font-size: 0.85rem; color: var(--g); font-weight: 800; 
       letter-spacing: 1.2px; margin-bottom: 24px; 
       display: inline-flex; align-items: center; gap: 8px;
       padding: 6px 16px; background: rgba(107,206,122,0.12);
       border: 1px solid rgba(107,206,122,0.2);
       border-radius: 12px;
+    }
       text-transform: uppercase;
     }
     
@@ -990,9 +991,9 @@
       font-family: var(--font-head);
       font-size: 1.4rem; font-weight: 900; margin-bottom: 12px;
     }
-    footer p { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+    footer p { font-size: 0.82rem; color: rgba(255,255,255,0.65); }
     .footer-links a {
-      color: rgba(255,255,255,0.35); font-size: 0.8rem;
+      color: rgba(255,255,255,0.7); font-size: 0.8rem;
       text-decoration: none; margin: 0 12px;
       transition: color 0.3s;
     }

@@ -262,14 +262,14 @@ function renderGallery(filter = 'todos') {
     const card = document.createElement('div');
     card.className = 'col-sm-6 col-md-4 col-lg-3 gal-phone-container reveal';
     card.innerHTML = `
-      <div class="gal-card" onclick="openLightbox(${i})">
+      <div class="gal-card" onclick="openLightbox(${i})" role="button" tabindex="0" onkeydown="if(event.key==='Enter')this.click()" aria-label="Ver pantalla: ${s.title}">
         <span class="gal-cat-badge">${s.cat}</span>
         <div class="gal-img-wrap">
           ${img}
         </div>
       </div>
       <div class="gal-info">
-        <h6>${s.title}</h6>
+        <h3>${s.title}</h3>
         <p>${s.desc}</p>
       </div>`;
     grid.appendChild(card);
